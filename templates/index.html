@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+<br/>
+{% block body %}
+<div class="container" >
+	<form method="POST" action="{{ url_for('extract')}}" enctype=multipart/form-data>
+		<div class="main-section" >
+			<h5>Drag and Drop</h5>
+			<input type="file" name="rawtext" required ="true" class="file-upload"  >
+		</div>
+    <div class="main-section" >
+         Enter Amount of data as Summary:- 
+			<input type="number" name="number" value="10" placeholder="Ex:- 10"  >
+		</div>
+        
+			<br/>
+        <input type="submit" class="btn btn-info" value="Summary" name="submit">
+        <input type="submit" class="btn btn-info" value="Entity" name="submit">
+        <input type="submit" class="btn btn-info" value="View All Entity" name="submit">
+        <input type="submit" class="btn btn-info" value="Download" name="submit">
+	</form>
+   </div>
+<br>
+<div class="container" >
+	<form method="POST" action="{{ url_for('extract_typed')}}" enctype=multipart/form-data>
+
+    <h1 class="container-fluid">Or</h1>
+    <div class="main-section" >
+      <label for="exampleFormControlTextarea1">Example Textarea :-</label>
+      <textarea class="form-control" required ="true" name="pasted" id="exampleFormControlTextarea1" rows="5"></textarea>
+    </div>
+  
+  <div class="main-section" >
+    Enter Amount of data as Summary:-  
+    <input type="number" name="number" value="10" placeholder="Ex:- 10 "  >
+  </div>
+			<br/>
+        <input type="submit" class="btn btn-info" value="Summary" name="submit">
+        <input type="submit" class="btn btn-info" value="Entity" name="submit"> 
+        <input type="submit" class="btn btn-info" value="View All Entity" name="submit">
+        <input type="submit" class="btn btn-info" value="Download" name="submit">
+	</form>
+</div>
+
+</br>
+</br>
+</br>
+
+
+{% endblock body %}

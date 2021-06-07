@@ -1,0 +1,218 @@
+{% extends "base.html" %}
+{% block title %} Entites
+  
+{% endblock title %} Entites
+{% block body %}
+<!-- Number of token labels -->
+<div class="container shadow-sm p-3 mb-5 bg-white rounded">
+  <h2>Number of Entities</h2>
+  <br>
+<div class="row">
+<div class="col-6">
+<table class="table table-bordered bg-primary" style="color: #fff">
+
+<tbody>
+  <tr>
+    <th>Organisations</th>
+    <td>{{ l_org }}</td>
+  </tr>
+  <tr>
+    <th>Location</th>
+    <td>{{ l_place }}</td>
+  </tr>
+  <tr>
+    <th>Law </th>
+    <td>{{ l_law }}</td>
+  </tr>
+  <tr>
+    <th>Person</th>
+    <td>{{ l_person }}</td>
+  </tr>
+  <tr>
+    <th>Money </th>
+    <td>{{ l_money }}</td>
+  </tr>
+  <tr>
+    <th>Quantity </th>
+    <td>{{ l_quntity  }}</td>
+  </tr>
+  <tr>
+    <th>Product </th>
+    <td>{{ l_product }}</td>
+  </tr>
+</tbody>
+</table>
+</div>
+
+<div class="col-6">
+<table class="table table-bordered bg-primary" style="color: #fff">
+
+<tbody>
+  <tr>
+    <th>Acts </th>
+    <td>{{ l_acts }}</td>
+  </tr>
+  <tr>
+    <th>Constraints</th>
+    <td>{{ l_cons }}</td>
+  </tr>
+  <tr>
+    <th>Conditions </th>
+    <td>{{ l_cond }}</td>
+  </tr>
+  <tr>
+    <th> Data & Time</th>
+    <td>{{ l_dateTime }}</td>
+  </tr>
+  <tr>
+    <th> Trademarks  </th>
+    <td>{{ l_trade }}</td>
+  </tr>
+  <tr>
+    <th> Regulations  </th>
+    <td>{{ l_regu  }}</td>
+  </tr>
+  <tr>
+    <th> Copyrights  </th>
+    <td>{{ l_copy }}</td>
+  </tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+
+<br>
+<!-- Left Side Bar for Token Entity -->
+<div class="container shadow-sm p-3 mb-5 bg-white rounded">
+<h2>Entity Type Summary</h2>
+<br>
+<div class="row">
+  <div class="col-3">
+    <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+      <a class="nav-link active" id="tab01" data-toggle="pill" href="#t01" role="tab" aria-controls="t01" aria-selected="true">Organization</a>
+      <a class="nav-link" id="tab02" data-toggle="pill" href="#t02" role="tab" aria-controls="t02" aria-selected="false">Location </a>
+      <a class="nav-link" id="tab03" data-toggle="pill" href="#t03" role="tab" aria-controls="t03" aria-selected="false">Law </a>
+      <a class="nav-link" id="tab04" data-toggle="pill" href="#t04" role="tab" aria-controls="t04" aria-selected="false">Acts</a>
+      <a class="nav-link" id="tab05" data-toggle="pill" href="#t05" role="tab" aria-controls="t05" aria-selected="false">Constraints </a>
+      <a class="nav-link" id="tab06" data-toggle="pill" href="#t06" role="tab" aria-controls="t06" aria-selected="false">Conditions </a>
+      <a class="nav-link" id="tab07" data-toggle="pill" href="#t07" role="tab" aria-controls="t07" aria-selected="false">Persons</a>
+      <a class="nav-link" id="tab08" data-toggle="pill" href="#t08" role="tab" aria-controls="t08" aria-selected="false">Date & Time</a>
+      <a class="nav-link" id="tab09" data-toggle="pill" href="#t09" role="tab" aria-controls="t09" aria-selected="false">Money</a>
+      
+      <a class="nav-link" id="tab10" data-toggle="pill" href="#t10" role="tab" aria-controls="t10" aria-selected="false">Trademarks </a>
+      <a class="nav-link" id="tab11" data-toggle="pill" href="#t11" role="tab" aria-controls="t11" aria-selected="false">Regulations </a>
+      <a class="nav-link" id="tab12" data-toggle="pill" href="#t12" role="tab" aria-controls="t12" aria-selected="false">Product</a>
+      <a class="nav-link" id="tab13" data-toggle="pill" href="#t13" role="tab" aria-controls="t13" aria-selected="false">Quantity </a>
+      <a class="nav-link" id="tab14" data-toggle="pill" href="#t14" role="tab" aria-controls="t14" aria-selected="false">Copyrights</a>
+    </div>
+  </div>
+  <div class="col-9">
+    <div class="tab-content" id="v-pills-tabContent">
+      <div class="tab-pane fade show active" id="t01" role="tabpanel" aria-labelledby="tab01">
+        <h3> Organisations </h3>
+        <p> {{result_org}} </p>
+      </div>
+      <div class="tab-pane fade" id="t02" role="tabpanel" aria-labelledby="tab02">
+        <h3> Locaton </h3>
+        <p> {{result_places}} </p>
+      </div>
+      <div class="tab-pane fade" id="t03" role="tabpanel" aria-labelledby="tab03">
+        <h3>Law </h3>
+        <p> {{result_law}} </p>
+
+      </div>
+      <div class="tab-pane fade" id="t04" role="tabpanel" aria-labelledby="tab04">
+        <h3>Acts </h3>
+        {% for i in result_acts  %}
+        <br>
+          <th><b> Act Name:- </b> </th>
+          <td>{{ i["act_name"] }}</td>
+        </br>
+          <th> Sections :-  </th>
+          <td>{{ i["section"] }}</td>
+          </br>
+          <th> Value :-  </th>
+          <td>{{ i["value"] }}</td>
+        </br>
+        </tr>
+          
+        {% endfor %}
+
+      </div>
+      <div class="tab-pane fade" id="t05" role="tabpanel" aria-labelledby="tab05">
+        <h3>Constraints </h3>
+        <br> {% for xy in result_constraints %}
+          {% for j in xy %}
+            {{j}}</br>
+          {% endfor %}
+          
+        {% endfor %}</p>
+
+      </div>
+      <div class="tab-pane fade" id="t06" role="tabpanel" aria-labelledby="tab06">
+        <h3>Conditions </h3>
+        <br> {% for xy in result_condition %}
+          {% for j in xy %}
+            {{j}}</br>
+          {% endfor %}
+          
+        {% endfor %}</p>
+
+      </div>
+      <div class="tab-pane fade" id="t07" role="tabpanel" aria-labelledby="tab07">
+        <h3>Persons </h3>
+        <p> {{result_name}} </p>
+
+      </div>
+      <div class="tab-pane fade" id="t08" role="tabpanel" aria-labelledby="tab08">
+        <h3>Date & Time</h3>
+        <p> {{result_date}} </p>
+
+      </div>
+      <div class="tab-pane fade" id="t09" role="tabpanel" aria-labelledby="tab09">
+        <h3>Money </h3>
+        <p> {{result_money}} </p>
+
+      </div>
+      <div class="tab-pane fade" id="t10" role="tabpanel" aria-labelledby="tab07">
+        <h3>Trademarks </h3>
+        <p> {{	result_trademark}} </p>
+
+      </div>
+      <div class="tab-pane fade" id="t11" role="tabpanel" aria-labelledby="tab08">
+        <h3>Regulations </h3>
+        <p> {{result_regulation}} </p>
+
+      </div>
+      <div class="tab-pane fade" id="t12" role="tabpanel" aria-labelledby="tab09">
+        <h3>Product </h3>
+        <p> {{result_product}} </p>
+
+      </div>
+      <div class="tab-pane fade" id="t13" role="tabpanel" aria-labelledby="tab08">
+        <h3>Quantity </h3>
+        <p> {{result_quantity}} </p>
+
+      </div>
+      <div class="tab-pane fade" id="t14" role="tabpanel" aria-labelledby="tab09">
+        <h3>Copyrights </h3>
+        <p> {{result_copyright}} </p>
+
+      </div>
+    </div>
+  </div>
+
+</div>
+
+</div>
+<div class="container shadow-sm p-3 mb-5 bg-white rounded">
+<form>
+  <input type="button" value="Go back!" class="btn btn-cyan tab" onclick="history.back()">
+</form>
+</div>
+<br>
+
+
+{% endblock body %}
